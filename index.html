@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Valentines 💖</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    overflow: hidden;
+    background-image: url("https://static.vecteezy.com/system/resources/previews/013/171/361/original/seamless-pattern-from-abstract-color-concentric-stains-liquid-texture-creative-aesthetic-background-with-stripes-blots-free-design-wavy-stripes-curved-illustration-vector.jpg");
+    background-repeat: repeat;
+}
+
+/* Screen Layout */
+.screen {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.8s ease;
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Text */
+h1 {
+    color: #ff2e7a;
+    font-size: 3rem;
+    text-shadow: 2px 2px 10px white;
+}
+
+p {
+    font-size: 1.5rem;
+    width: 70%;
+    color: #333;
+    background: rgba(255,255,255,0.8);
+    padding: 20px;
+    border-radius: 15px;
+}
+
+/* Button */
+button {
+    padding: 15px 30px;
+    font-size: 1.3rem;
+    border: none;
+    border-radius: 12px;
+    background: #ff2e7a;
+    color: white;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #ff5c98;
+    transform: scale(1.1);
+}
+
+/* Heart Burst */
+.heart {
+    position: absolute;
+    font-size: 24px;
+    animation: floatUp 2s linear forwards;
+}
+
+@keyframes floatUp {
+    from {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-300px) scale(1.8);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Spotify Embed -->
+<iframe style="display:none"
+    src="https://open.spotify.com/embed/album/3HxyAuWx5F88K7SSvENdmz?utm_source=generator"
+    width="0" height="0" frameBorder="0"
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+</iframe>
+
+<!-- Screen 1 -->
+<div id="screen1" class="screen">
+    <h1>Happy Valentines kushu &lt;3</h1>
+    <button onclick="nextScreen()">CLICK ME!</button>
+</div>
+
+<!-- Screen 2 -->
+<div id="screen2" class="screen hidden">
+    <p>
+        we've had our ups and downs but then again, you know its only you and me at the end of the day where we're together.
+        I'm growing, and I'll help you grow. Let's achieve all the dreams and one day we're going to look back and smile at our past :)
+    </p>
+</div>
+
+<script>
+
+/* Heart Burst Function */
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.top = window.innerHeight + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 2000);
+}
+
+/* Burst on Load */
+setInterval(createHeart, 200);
+
+/* Switch Screens */
+function nextScreen() {
+    document.getElementById("screen1").classList.add("hidden");
+    document.getElementById("screen2").classList.remove("hidden");
+}
+
+</script>
+
+</body>
+</html>
